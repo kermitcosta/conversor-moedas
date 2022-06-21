@@ -1,15 +1,11 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <h1>Conversor de Moedas</h1>
-    <span class="example-spacer"></span>
-    <button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    ></button>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<button type="button" class="btn btn-danger">Danger</button>
-<button class="btn btn-primary" type="submit">Button</button>
+<a routerLink="listar-moedas">
+  <button type="button" class="btn btn-danger m-3">Listar moedas</button>
+</a>
 
 <router-outlet></router-outlet>
