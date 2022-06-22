@@ -4,7 +4,7 @@ import { SupportedSymbolsListComponent } from './modules/supported-symbols/suppo
 
 
 const routes: Routes = [
-  { path: 'listar-moedas', component: SupportedSymbolsListComponent }
+  { path: 'listar-moedas', component: SupportedSymbolsListComponent, title: 'Lista de Moedas' }
 ];
 
 @NgModule({
