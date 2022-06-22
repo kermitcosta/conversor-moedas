@@ -5,13 +5,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { MatToolbarModule } from '@angular/material/toolbar'; // Teste angular material
+
 import { SupportedSymbolsModule } from './modules/supported-symbols/supported-symbols.module';
 import { HomeModule } from './modules/home/home.module';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { MatButtonModule } from '@angular/material/button'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { HomeModule } from './modules/home/home.module';
     BrowserAnimationsModule,
     SupportedSymbolsModule,
     HomeModule,
-    MatToolbarModule,  // Teste angular material
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
