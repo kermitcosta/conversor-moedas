@@ -1,6 +1,7 @@
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { GetSymbolsService } from './../../../services/get-symbols.service';
 import { SupportedSymbols } from 'src/app/models/supported-symbols';
 
@@ -12,7 +13,7 @@ import { SupportedSymbols } from 'src/app/models/supported-symbols';
 })
 export class SupportedSymbolsListComponent implements OnInit {
 
-  symbols: any
+  symbols: SupportedSymbols[] = []
   columnsToDisplay: string[] = ['Código', 'Descrição'];
   dataSource!: MatTableDataSource<SupportedSymbols>
   @ViewChild(MatPaginator) paginator!: MatPaginator

@@ -1,0 +1,15 @@
+.angular-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.home-img {
+  height: 550px;
+  width: 550px;
+}
+
+@media (max-width: 1200px) {
+  .home-img {
+    display: none;
+  }
+}

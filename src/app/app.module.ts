@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar'; // Teste angular material
 import { SupportedSymbolsModule } from './modules/supported-symbols/supported-symbols.module';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SupportedSymbolsModule } from './modules/supported-symbols/supported-sy
     HttpClientModule,
     BrowserAnimationsModule,
     SupportedSymbolsModule,
+    HomeModule,
     MatToolbarModule,  // Teste angular material
   ],
   providers: [],
