@@ -6,15 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
-import { SupportedSymbolsModule } from './modules/supported-symbols/supported-symbols.module';
-import { HomeModule } from './modules/home/home.module';
+import { SupportedSymbolsModule } from './components/supported-symbols-list/supported-symbols.module';
+import { HomeModule } from './components/home-page/home.module';
+import { AboutPageModule } from './components/about-page/about-page.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { MatButtonModule } from '@angular/material/button'
+import { ConversorModule } from './components/conversor-page/conversor.module';
+import { MatButtonModule } from '@angular/material/button';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +28,8 @@ import { MatButtonModule } from '@angular/material/button'
     BrowserAnimationsModule,
     SupportedSymbolsModule,
     HomeModule,
+    AboutPageModule,
+    ConversorModule,
     MatButtonModule
   ],
   providers: [],

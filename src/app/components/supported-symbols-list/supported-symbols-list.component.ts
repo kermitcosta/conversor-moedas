@@ -1,8 +1,9 @@
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 
-import { GetSymbolsService } from './../../../services/get-symbols.service';
+import { GetSymbolsService } from '../../services/get-symbols.service';
 import { SupportedSymbols } from 'src/app/models/supported-symbols';
 
 
@@ -11,25 +12,29 @@ import { SupportedSymbols } from 'src/app/models/supported-symbols';
   templateUrl: './supported-symbols-list.component.html',
   styleUrls: ['./supported-symbols-list.component.css']
 })
-export class SupportedSymbolsListComponent implements OnInit {
+export class SupportedSymbolsListComponent implements OnInit, AfterViewInit {
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator
+  @ViewChild(MatSort) sort!: MatSort
 
   symbols: SupportedSymbols[] = []
-  columnsToDisplay: string[] = ['Código', 'Descrição'];
+  columnsToDisplay: string[] = ['code', 'description'];
   dataSource!: MatTableDataSource<SupportedSymbols>
-  @ViewChild(MatPaginator) paginator!: MatPaginator
 
-  constructor(private service: GetSymbolsService) {
 
+  constructor(private service: GetSymbolsService) { }
+
+  ngOnInit(): void {
     this.service.listSymbols().subscribe(dado => {
-
       this.symbols = Object.values(dado.symbols)
       this.dataSource = new MatTableDataSource(this.symbols)
 
+      this.dataSource.sort = this.sort
       this.dataSource.paginator = this.paginator
     })
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
   }
 
   applyFilter(event: Event) {
