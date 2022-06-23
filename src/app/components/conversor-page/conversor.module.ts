@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ConversorPageComponent } from './conversor-page.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
+import { ConversorPageComponent } from './conversor-page.component';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { ConversorPageComponent } from './conversor-page.component';
     ConversorPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatTabsModule
   ]
 })
 export class ConversorModule { }

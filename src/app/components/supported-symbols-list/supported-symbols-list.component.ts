@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -12,7 +12,7 @@ import { SupportedSymbols } from 'src/app/models/supported-symbols';
   templateUrl: './supported-symbols-list.component.html',
   styleUrls: ['./supported-symbols-list.component.css']
 })
-export class SupportedSymbolsListComponent implements OnInit, AfterViewInit {
+export class SupportedSymbolsListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
@@ -20,7 +20,6 @@ export class SupportedSymbolsListComponent implements OnInit, AfterViewInit {
   symbols: SupportedSymbols[] = []
   columnsToDisplay: string[] = ['code', 'description'];
   dataSource!: MatTableDataSource<SupportedSymbols>
-
 
   constructor(private service: GetSymbolsService) { }
 
@@ -32,9 +31,6 @@ export class SupportedSymbolsListComponent implements OnInit, AfterViewInit {
       this.dataSource.sort = this.sort
       this.dataSource.paginator = this.paginator
     })
-  }
-
-  ngAfterViewInit(): void {
   }
 
   applyFilter(event: Event) {

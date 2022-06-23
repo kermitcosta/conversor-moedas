@@ -24,18 +24,16 @@
       </div>
       <div class="row mt-4">
         <div class="col-6 text-center">
-          <a routerLink="/conversor">
-            <button type="button" class="btn-lg btn-outline-primary">
-              Converter moedas
-            </button>
-          </a>
+          <app-button-large
+            [nomeBotao]="'Converter Moedas'"
+            routerLink="/conversor"
+          ></app-button-large>
         </div>
         <div class="col-6 text-center">
-          <a routerLink="/listar-moedas">
-            <button type="button" class="btn-lg btn-outline-primary">
-              Listar símbolos
-            </button>
-          </a>
+          <app-button-large
+            [nomeBotao]="'Listar Símbolos'"
+            routerLink="/listar-moedas"
+          ></app-button-large>
         </div>
       </div>
     </div>
