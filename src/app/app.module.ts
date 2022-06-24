@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 
 
 import { SupportedSymbolsModule } from './components/supported-symbols-list/supported-symbols.module';
-import { HomeModule } from './components/home-page/home.module';
 import { AboutPageModule } from './components/about-page/about-page.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ConversorModule } from './components/conversor-page/conversor.module';
@@ -27,10 +26,6 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SupportedSymbolsModule,
-    HomeModule,
-    AboutPageModule,
-    ConversorModule,
     MatButtonModule
   ],
   providers: [],

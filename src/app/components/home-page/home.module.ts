@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { ButtonLargeModule } from './../button-large/button-large.module';
 import { HomePageComponent } from './home-page.component';
+import { HomeRoutingRoutes } from './home-routing.routing';
 
 
 
@@ -14,6 +15,7 @@ import { HomePageComponent } from './home-page.component';
   imports: [
     CommonModule,
     RouterModule,
+    HomeRoutingRoutes,
     ButtonLargeModule
   ]
 })

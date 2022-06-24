@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { ConversorPageComponent } from './conversor-page.component';
+import { ConversorRoutes } from './conversor.routing';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { ConversorPageComponent } from './conversor-page.component';
   ],
   imports: [
     CommonModule,
+    ConversorRoutes,
     MatTabsModule
   ]
 })

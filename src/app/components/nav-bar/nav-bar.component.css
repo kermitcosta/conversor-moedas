@@ -1,9 +1,13 @@
-nav {
-  background-color: #3f51b5;
+.active-menu {
+  color: #000000;
 }
 
 .mat-flat-button:hover {
   background-color: #283593;
+}
+
+nav {
+  background-color: #3f51b5;
 }
 
 .navbar-brand {

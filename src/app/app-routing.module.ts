@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { ConversorPageComponent } from './components/conversor-page/conversor-page.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { SupportedSymbolsListComponent } from './components/supported-symbols-list/supported-symbols-list.component';
@@ -10,10 +8,22 @@ import { SupportedSymbolsListComponent } from './components/supported-symbols-li
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomePageComponent, title: 'Conversor de Moedas' },
-  { path: 'conversor', component: ConversorPageComponent, title: 'Conversor' },
-  { path: 'listar-moedas', component: SupportedSymbolsListComponent, title: 'Lista de Moedas' },
-  { path: 'sobre', component: AboutPageComponent, title: 'Sobre' },
+  {
+    path: 'home',
+    loadChildren: () => import('src/app/components/home-page/home.module').then((m) => m.HomeModule)
+  },
+  {
+    path: 'conversor',
+    loadChildren: () => import('src/app/components/conversor-page/conversor.module').then((m) => m.ConversorModule)
+  },
+  {
+    path: 'listar-moedas',
+    loadChildren: () => import('src/app/components/supported-symbols-list/supported-symbols.module').then((m) => m.SupportedSymbolsModule)
+  },
+  {
+    path: 'sobre',
+    loadChildren: () => import('src/app/components/about-page/about-page.module').then((m) => m.AboutPageModule)
+  },
   { path: '**', component: ErrorPageComponent, title: '404' }
 ];
 
