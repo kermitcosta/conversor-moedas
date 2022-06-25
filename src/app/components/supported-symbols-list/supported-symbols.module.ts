@@ -22,6 +22,7 @@ import { SupportedSymbolsListComponent } from './supported-symbols-list.componen
     MatFormFieldModule,
     MatInputModule
   ],
+  providers: [],
   exports: []
 })
 export class SupportedSymbolsModule { }

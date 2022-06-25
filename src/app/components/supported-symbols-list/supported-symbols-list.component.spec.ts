@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SupportedSymbolsListComponent } from './supported-symbols-list.component';
+import { GetSymbolsService } from 'src/app/services/get-symbols.service';
 
 describe('SupportedSymbolsListComponent', () => {
   let component: SupportedSymbolsListComponent;
@@ -8,9 +9,11 @@ describe('SupportedSymbolsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SupportedSymbolsListComponent ]
+      declarations: [SupportedSymbolsListComponent],
+      imports: [HttpClientTestingModule],
+      providers: [GetSymbolsService]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SupportedSymbolsListComponent);
     component = fixture.componentInstance;

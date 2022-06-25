@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ButtonLargeComponent implements OnInit {
 
   @Input() nomeBotao: string = ''
+  @Input() classes: string[] = []
 
   constructor() { }
 

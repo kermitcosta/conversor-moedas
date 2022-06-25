@@ -12,7 +12,7 @@
             alt=""
           />Angular.
         </p>
-        <p class="text-muted">
+        <small class="text-muted">
           API utilizada:
           <a
             class="link-primary"
@@ -20,19 +20,21 @@
             target="_blank"
             >Exchangerate</a
           >
-        </p>
+        </small>
       </div>
       <div class="row mt-4">
         <div class="col-md-6">
           <app-button-large
             [nomeBotao]="'Converter Moedas'"
             routerLink="/conversor"
+            [classes]="['btn-lg', 'btn-primary']"
           ></app-button-large>
         </div>
         <div class="col-md-6 text-end">
           <app-button-large
             [nomeBotao]="'Listar Símbolos'"
             routerLink="/listar-moedas"
+            [classes]="['btn-lg', 'btn-outline-primary']"
           ></app-button-large>
         </div>
       </div>
