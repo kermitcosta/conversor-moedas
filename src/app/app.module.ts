@@ -4,9 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { MatButtonModule } from '@angular/material/button';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 
@@ -20,6 +21,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatIconModule,
     BrowserAnimationsModule,
     MatButtonModule
   ],

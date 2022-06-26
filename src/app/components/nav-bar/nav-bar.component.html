@@ -1,69 +1,75 @@
-<nav class="navbar navbar-expand-lg navbar-light mat-elevation-z8">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/home">
-      <img
-        src="../assets/images/currency.png"
-        alt=""
-        width="50"
-        height="50"
-        class="d-inline-block align-text-center"
-      />
-      Conversor</a
-    >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item ps-lg-3">
-          <button
-            mat-flat-button
-            routerLink="/home"
-            routerLinkActive="active-menu"
-            color="primary"
-          >
-            Home
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            mat-flat-button
-            routerLink="/conversor"
-            routerLinkActive="active-menu"
-            color="primary"
-          >
-            Conversor
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            mat-flat-button
-            routerLink="/listar-moedas"
-            routerLinkActive="active-menu"
-            color="primary"
-          >
-            Lista de Símbolos
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            mat-flat-button
-            routerLink="/sobre"
-            routerLinkActive="active-menu"
-            color="primary"
-          >
-            Sobre
-          </button>
-        </li>
-      </ul>
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light mat-elevation-z8">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/home">
+        <img
+          src="../assets/images/currency.png"
+          alt=""
+          width="50"
+          height="50"
+          class="d-inline-block align-text-center"
+        />
+        Conversor</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item ps-lg-3">
+            <button
+              mat-flat-button
+              routerLink="/home"
+              routerLinkActive="active-menu"
+              color="primary"
+            >
+              <mat-icon>home</mat-icon>
+              Home
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              mat-flat-button
+              routerLink="/conversor"
+              routerLinkActive="active-menu"
+              color="primary"
+            >
+              <mat-icon>compare_arrows</mat-icon>
+              Conversor
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              mat-flat-button
+              routerLink="/listar-moedas"
+              routerLinkActive="active-menu"
+              color="primary"
+            >
+              <mat-icon>list_alt</mat-icon>
+              Símbolos
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              mat-flat-button
+              routerLink="/sobre"
+              routerLinkActive="active-menu"
+              color="primary"
+            >
+              <mat-icon>info</mat-icon>
+              Sobre
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>

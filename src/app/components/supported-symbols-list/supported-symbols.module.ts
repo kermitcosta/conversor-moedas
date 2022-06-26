@@ -7,6 +7,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+
 import { SupportedSymbolsListComponent } from './supported-symbols-list.component';
 
 @NgModule({
@@ -20,7 +21,7 @@ import { SupportedSymbolsListComponent } from './supported-symbols-list.componen
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
   exports: []
