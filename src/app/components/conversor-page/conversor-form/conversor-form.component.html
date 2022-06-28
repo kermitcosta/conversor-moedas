@@ -1,0 +1,42 @@
+<div class="container mt-4 mb-4">
+  <form #conversao action="">
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Moeda Origem</mat-label>
+          <mat-select [(ngModel)]="moedaOrigem" name="moedaOrigem">
+            <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
+              {{ symbol.code }} - {{ symbol.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Moeda Destino</mat-label>
+          <mat-select [(ngModel)]="moedaDestino" name="moedaDestino">
+            <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
+              {{ symbol.code }} - {{ symbol.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Valor</mat-label>
+          <input type="number" matInput [(ngModel)]="valor" name="valor" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button class="btn btn-primary active" (click)="mostrarValor()">
+        Converter
+      </button>
+    </div>
+  </form>
+</div>
+<p>{{ moedaOrigem }}</p>
+<p>{{ moedaDestino }}</p>
+<p>{{ valor }}</p>
