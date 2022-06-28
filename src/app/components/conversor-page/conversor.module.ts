@@ -4,11 +4,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { ConversorPageComponent } from './conversor-page.component';
 import { ConversorRoutes } from './conversor.routing';
+import { ConversorFormComponent } from './conversor-form/conversor-form.component';
 
 
 @NgModule({
   declarations: [
-    ConversorPageComponent
+    ConversorPageComponent,
+    ConversorFormComponent
   ],
   imports: [
     CommonModule,

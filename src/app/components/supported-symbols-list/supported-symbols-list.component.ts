@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-import { GetSymbolsService } from '../../services/get-symbols.service';
+import { ExchangeService } from '../../services/exchange.service';
 import { SupportedSymbols } from 'src/app/models/supported-symbols';
 
 
@@ -21,7 +21,7 @@ export class SupportedSymbolsListComponent implements OnInit {
   columnsToDisplay: string[] = ['code', 'description'];
   dataSource!: MatTableDataSource<SupportedSymbols>
 
-  constructor(private service: GetSymbolsService) { }
+  constructor(private service: ExchangeService) { }
 
   ngOnInit(): void {
     this.service.listSymbols().subscribe(dado => {

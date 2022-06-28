@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class GetSymbolsService {
+export class ExchangeService {
 
   private readonly API = 'https://api.exchangerate.host/symbols'
 

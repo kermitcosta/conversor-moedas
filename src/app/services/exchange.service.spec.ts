@@ -1,17 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { GetSymbolsService } from './get-symbols.service';
+import { ExchangeService } from './exchange.service';
 
 describe('GetSymbolsService', () => {
-  let service: GetSymbolsService;
+  let service: ExchangeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [GetSymbolsService],
+      providers: [ExchangeService],
     });
-    service = TestBed.inject(GetSymbolsService);
+    service = TestBed.inject(ExchangeService);
   });
 
   it('should be created', () => {

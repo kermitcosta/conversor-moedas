@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SupportedSymbolsListComponent } from './supported-symbols-list.component';
-import { GetSymbolsService } from 'src/app/services/get-symbols.service';
+import { ExchangeService } from 'src/app/services/exchange.service';
 
 describe('SupportedSymbolsListComponent', () => {
   let component: SupportedSymbolsListComponent;
@@ -11,7 +11,7 @@ describe('SupportedSymbolsListComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [SupportedSymbolsListComponent],
       imports: [HttpClientTestingModule],
-      providers: [GetSymbolsService]
+      providers: [ExchangeService]
     })
       .compileComponents();
 
