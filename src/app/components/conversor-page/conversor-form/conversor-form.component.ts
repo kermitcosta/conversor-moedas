@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SupportedSymbols } from 'src/app/models/supported-symbols';
 import { ExchangeService } from 'src/app/services/exchange.service';
 
+import { Conversion } from './../../../models/conversion';
+
 
 @Component({
   selector: 'app-conversor-form',
@@ -11,9 +13,13 @@ import { ExchangeService } from 'src/app/services/exchange.service';
 export class ConversorFormComponent implements OnInit {
 
   symbols: SupportedSymbols[] = []
-  moedaOrigem = ''
-  moedaDestino = ''
-  valor = ''
+
+  initialCurrency = ''
+  finalCurrency = ''
+  value!: number
+  showDiv: boolean = false
+
+  conversion!: Conversion
 
   constructor(private service: ExchangeService) { }
 
@@ -23,9 +29,22 @@ export class ConversorFormComponent implements OnInit {
     })
   }
 
-  mostrarValor() {
-    console.log(this.moedaOrigem)
-    console.log(this.moedaDestino)
-    console.log(this.valor)
+  sendToConvert() {
+    this.service.convert(this.initialCurrency, this.finalCurrency, this.value)
+      .subscribe(res => {
+        this.conversion = {
+          from: res.query.from,
+          to: res.query.to,
+          value: res.query.amout,
+          date: res.date,
+          result: res.result,
+          rate: res.info.rate
+        }
+        this.showDiv = true
+      })
+  }
+
+  clearConversion() {
+    this.showDiv = false
   }
 }

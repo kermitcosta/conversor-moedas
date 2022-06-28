@@ -4,7 +4,11 @@
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Moeda Origem</mat-label>
-          <mat-select [(ngModel)]="moedaOrigem" name="moedaOrigem">
+          <mat-select
+            [(ngModel)]="initialCurrency"
+            name="initialCurrency"
+            required="true"
+          >
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
               {{ symbol.code }} - {{ symbol.description }}
             </mat-option>
@@ -15,7 +19,11 @@
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Moeda Destino</mat-label>
-          <mat-select [(ngModel)]="moedaDestino" name="moedaDestino">
+          <mat-select
+            [(ngModel)]="finalCurrency"
+            name="finalCurrency"
+            required="true"
+          >
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
               {{ symbol.code }} - {{ symbol.description }}
             </mat-option>
@@ -26,17 +34,32 @@
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Valor</mat-label>
-          <input type="number" matInput [(ngModel)]="valor" name="valor" />
+          <input
+            type="number"
+            matInput
+            [(ngModel)]="value"
+            name="valor"
+            required="true"
+          />
         </mat-form-field>
       </div>
     </div>
     <div class="d-grid gap-2 col-6 mx-auto">
-      <button class="btn btn-primary active" (click)="mostrarValor()">
+      <button class="btn btn-primary active" (click)="sendToConvert()">
         Converter
       </button>
     </div>
   </form>
 </div>
-<p>{{ moedaOrigem }}</p>
-<p>{{ moedaDestino }}</p>
-<p>{{ valor }}</p>
+<div *ngIf="showDiv" class="container">
+  <div class="row">
+    <p>Converteu {{ conversion.value }} de {{ conversion.from }}</p>
+    <p>Para {{ conversion.to }}</p>
+    <p>Resultado: {{ conversion.result }}</p>
+    <p>Taxa de Conversão: {{ conversion.rate }}</p>
+    <p>Data da Conversão: {{ conversion.date }}</p>
+  </div>
+  <button class="btn btn-outline-primary" (click)="clearConversion()">
+    Limpar
+  </button>
+</div>

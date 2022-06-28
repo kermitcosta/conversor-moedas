@@ -7,12 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class ExchangeService {
 
-  private readonly API = 'https://api.exchangerate.host/symbols'
+  private readonly API = 'https://api.exchangerate.host'
 
   constructor(private http: HttpClient) { }
 
   public listSymbols(): Observable<any> {
-    return this.http.get<any>(this.API)
+    return this.http.get<any>(`${this.API}/symbols`)
+  }
+
+  public convert(from: string, to: string, value: number): Observable<any> {
+    return this.http.get<any>(`${this.API}/convert?from=${from}&to=${to}&amount=${value}`)
   }
 
 }
