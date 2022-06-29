@@ -1,0 +1,10 @@
+<div *ngIf="conversions">
+  <div *ngFor="let item of conversions">
+    <p>
+      {{ item.value }}
+      <span class="fw-bold">{{ item.from }}</span> equivale a
+      <span class="fw-bold">{{ item.result }}</span> do símbolo
+      <span class="fw-bold">{{ item.to }}.</span>
+    </p>
+  </div>
+</div>

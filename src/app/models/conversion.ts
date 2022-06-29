@@ -2,7 +2,7 @@ export interface Conversion {
   from: string,
   to: string,
   value: number,
-  date: string,
+  date: Date,
   result: number,
   rate: number
 }

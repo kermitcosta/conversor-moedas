@@ -10,12 +10,14 @@ import { FormsModule } from '@angular/forms';
 import { ConversorPageComponent } from './conversor-page.component';
 import { ConversorRoutes } from './conversor.routing';
 import { ConversorFormComponent } from './conversor-form/conversor-form.component';
+import { ConversorHistoryComponent } from './conversor-history/conversor-history.component';
 
 
 @NgModule({
   declarations: [
     ConversorPageComponent,
-    ConversorFormComponent
+    ConversorFormComponent,
+    ConversorHistoryComponent
   ],
   imports: [
     CommonModule,

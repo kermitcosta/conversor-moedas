@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SupportedSymbols } from 'src/app/models/supported-symbols';
 import { ExchangeService } from 'src/app/services/exchange.service';
@@ -21,6 +21,9 @@ export class ConversorFormComponent implements OnInit {
   showDiv: boolean = false
 
   conversion!: Conversion
+  conversions: Conversion[] = []
+
+  @Output() redirect: EventEmitter<any> = new EventEmitter
 
   constructor(private service: ExchangeService) { }
 
@@ -28,6 +31,7 @@ export class ConversorFormComponent implements OnInit {
     this.service.listSymbols().subscribe(dado => {
       this.symbols = Object.values(dado.symbols)
     })
+    this.conversions = JSON.parse(sessionStorage.getItem('conversions') as string)
   }
 
   sendToConvert() {
@@ -37,11 +41,14 @@ export class ConversorFormComponent implements OnInit {
           from: res.query.from,
           to: res.query.to,
           value: res.query.amount,
-          date: res.date,
+          date: new Date(),
           result: res.result,
           rate: res.info.rate
         }
+        this.conversions.push(this.conversion)
         this.showDiv = true
+        sessionStorage.setItem('conversions', JSON.stringify(this.conversions))
+        this.redirect.emit(this.conversions)
       })
   }
 
