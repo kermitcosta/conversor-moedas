@@ -31,7 +31,9 @@ export class ConversorFormComponent implements OnInit {
     this.service.listSymbols().subscribe(dado => {
       this.symbols = Object.values(dado.symbols)
     })
-    this.conversions = JSON.parse(sessionStorage.getItem('conversions') as string)
+    if (sessionStorage.length > 0) {
+      this.conversions = JSON.parse(sessionStorage.getItem('conversions') as string)
+    }
   }
 
   sendToConvert() {
