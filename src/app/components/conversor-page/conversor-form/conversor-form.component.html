@@ -1,6 +1,6 @@
 <div class="container mt-4 mb-4">
-  <form #conversao action="">
-    <div class="row">
+  <form #convertForm="ngForm" action="">
+    <div class="row text-center">
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Moeda Origem</mat-label>
@@ -40,26 +40,41 @@
             [(ngModel)]="value"
             name="valor"
             required="true"
+            min="0.01"
           />
         </mat-form-field>
       </div>
     </div>
     <div class="d-grid gap-2 col-6 mx-auto">
-      <button class="btn btn-primary active" (click)="sendToConvert()">
+      <button
+        [disabled]="convertForm.invalid"
+        class="btn btn-primary active"
+        (click)="sendToConvert()"
+      >
         Converter
       </button>
     </div>
   </form>
 </div>
-<div *ngIf="showDiv" class="container">
-  <div class="row">
-    <p>Converteu {{ conversion.value }} de {{ conversion.from }}</p>
-    <p>Para {{ conversion.to }}</p>
-    <p>Resultado: {{ conversion.result }}</p>
-    <p>Taxa de Conversão: {{ conversion.rate }}</p>
-    <p>Data da Conversão: {{ conversion.date }}</p>
+<div *ngIf="showDiv" class="container mb-4">
+  <div class="text-center">
+    <p c>
+      {{ conversion.value }}
+      <span class="fw-bold">{{ conversion.from }}</span> equivale a
+      <span class="fw-bold">{{ conversion.result }}</span> do símbolo
+      <span class="fw-bold">{{ conversion.to }}.</span>
+    </p>
+    <p class="fw-light text-muted fs-6">
+      Taxa de conversão: {{ conversion.rate }}
+    </p>
   </div>
-  <button class="btn btn-outline-primary" (click)="clearConversion()">
-    Limpar
-  </button>
+  <div class="text-center">
+    <button
+      type="button"
+      class="btn btn-small btn-outline-primary"
+      (click)="clearConversion(convertForm)"
+    >
+      Limpar
+    </button>
+  </div>
 </div>

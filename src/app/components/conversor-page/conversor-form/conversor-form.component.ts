@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { SupportedSymbols } from 'src/app/models/supported-symbols';
 import { ExchangeService } from 'src/app/services/exchange.service';
 
@@ -35,7 +36,7 @@ export class ConversorFormComponent implements OnInit {
         this.conversion = {
           from: res.query.from,
           to: res.query.to,
-          value: res.query.amout,
+          value: res.query.amount,
           date: res.date,
           result: res.result,
           rate: res.info.rate
@@ -44,7 +45,8 @@ export class ConversorFormComponent implements OnInit {
       })
   }
 
-  clearConversion() {
+  clearConversion(form: NgForm) {
     this.showDiv = false
+    form.resetForm()
   }
 }
