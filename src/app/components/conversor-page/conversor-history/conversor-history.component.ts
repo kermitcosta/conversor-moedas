@@ -1,8 +1,12 @@
+import { ConfirmDialogComponent } from './../confirm-dialog/confirm-dialog.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Conversion } from 'src/app/models/conversion';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+
 
 
 @Component({
@@ -16,7 +20,7 @@ export class ConversorHistoryComponent implements OnInit, AfterViewInit {
   dataSource!: MatTableDataSource<Conversion>
   conversions: Conversion[] = []
 
-  constructor() { }
+  constructor(private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   @ViewChild(MatSort) sort!: MatSort
   @ViewChild(MatPaginator) paginator!: MatPaginator
@@ -31,11 +35,22 @@ export class ConversorHistoryComponent implements OnInit, AfterViewInit {
     this.dataSource = new MatTableDataSource(this.conversions)
   }
 
-  deleteData(target: Conversion) {
+  openDialog(target: Conversion) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent)
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res === true) {
+        this.deleteData(target)
+      }
+    })
+  }
+
+  private deleteData(target: Conversion) {
     let newDataSource = this.dataSource.data.filter(conversao => conversao != target)
     this.conversions = newDataSource
     this.dataSource.data = newDataSource
     sessionStorage.setItem('conversions', JSON.stringify(newDataSource))
+    this.snackBar.open('Conversão Apagada', '', { duration: 2500, panelClass: ['blue-snackbar'] })
   }
 
 }
