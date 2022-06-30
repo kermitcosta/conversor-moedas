@@ -4,4 +4,9 @@ table {
 
 mat-icon:hover {
   cursor: pointer;
+  color: #3f51b5;
+}
+
+.mat-row:hover {
+  background-color: #3f51b521;
 }

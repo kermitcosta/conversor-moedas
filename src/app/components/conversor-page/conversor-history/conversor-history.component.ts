@@ -33,6 +33,7 @@ export class ConversorHistoryComponent implements OnInit, AfterViewInit {
 
   deleteData(target: Conversion) {
     let newDataSource = this.dataSource.data.filter(conversao => conversao != target)
+    this.conversions = newDataSource
     this.dataSource.data = newDataSource
     sessionStorage.setItem('conversions', JSON.stringify(newDataSource))
   }
