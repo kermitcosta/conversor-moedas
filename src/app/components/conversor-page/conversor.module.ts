@@ -6,6 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 import { ConversorPageComponent } from './conversor-page.component';
 import { ConversorRoutes } from './conversor.routing';
@@ -27,7 +30,10 @@ import { ConversorHistoryComponent } from './conversor-history/conversor-history
     FormsModule,
     MatSelectModule,
     MatInputModule,
-    ButtonLargeModule
+    ButtonLargeModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 export class ConversorModule { }

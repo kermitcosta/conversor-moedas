@@ -23,7 +23,7 @@ export class ConversorFormComponent implements OnInit {
   conversion!: Conversion
   conversions: Conversion[] = []
 
-  @Output() redirect: EventEmitter<any> = new EventEmitter
+  // @Output() redirect: EventEmitter<any> = new EventEmitter
 
   constructor(private service: ExchangeService) { }
 
@@ -50,7 +50,7 @@ export class ConversorFormComponent implements OnInit {
         this.conversions.push(this.conversion)
         this.showDiv = true
         sessionStorage.setItem('conversions', JSON.stringify(this.conversions))
-        this.redirect.emit(this.conversions)
+        // this.redirect.emit(this.conversions)
       })
   }
 

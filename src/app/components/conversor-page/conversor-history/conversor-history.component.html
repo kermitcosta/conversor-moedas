@@ -1,10 +1,66 @@
-<div *ngIf="conversions">
-  <div *ngFor="let item of conversions">
-    <p>
-      {{ item.value }}
-      <span class="fw-bold">{{ item.from }}</span> equivale a
-      <span class="fw-bold">{{ item.result }}</span> do símbolo
-      <span class="fw-bold">{{ item.to }}.</span>
-    </p>
-  </div>
-</div>
+<table
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  matSortActive="date"
+  matSortDirection="desc"
+>
+  <!-- Coluna Data -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Data da transação</th>
+    <td mat-cell *matCellDef="let conversao">
+      {{ conversao.date | date: "dd/MM/yyyy" }}
+    </td>
+  </ng-container>
+
+  <!-- Coluna Hora (sort não funciona pela hora)-->
+  <ng-container matColumnDef="hour">
+    <th mat-header-cell *matHeaderCellDef>Hora da transação</th>
+    <td mat-cell *matCellDef="let conversao">
+      {{ conversao.date | date: "HH:mm" }}
+    </td>
+  </ng-container>
+
+  <!-- Coluna Valor -->
+  <ng-container matColumnDef="value">
+    <th mat-header-cell *matHeaderCellDef>Valor Convertido</th>
+    <td mat-cell *matCellDef="let conversao">
+      {{ conversao.value | currency: " " }}
+    </td>
+  </ng-container>
+
+  <!-- Coluna Moeda inicial -->
+  <ng-container matColumnDef="from">
+    <th mat-header-cell *matHeaderCellDef>Moeda inicial</th>
+    <td mat-cell *matCellDef="let conversao">{{ conversao.from }}</td>
+  </ng-container>
+
+  <!-- Coluna Resultado -->
+  <ng-container matColumnDef="result">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Resultado</th>
+    <td mat-cell *matCellDef="let conversao">
+      {{ conversao.result | currency: " " }}
+    </td>
+  </ng-container>
+
+  <!-- Coluna Moeda Destino -->
+  <ng-container matColumnDef="to">
+    <th mat-header-cell *matHeaderCellDef>Moeda de destino</th>
+    <td mat-cell *matCellDef="let conversao">{{ conversao.to }}</td>
+  </ng-container>
+
+  <!-- Coluna Taxa de conversão -->
+  <ng-container matColumnDef="rate">
+    <th mat-header-cell *matHeaderCellDef>Taxa da conversão</th>
+    <td mat-cell *matCellDef="let conversao">{{ conversao.rate }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+</table>
+<mat-paginator
+  [pageSizeOptions]="[10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>
