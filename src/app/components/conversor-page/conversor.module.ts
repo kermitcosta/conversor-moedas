@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+
 
 import { ConversorPageComponent } from './conversor-page.component';
 import { ConversorRoutes } from './conversor.routing';
@@ -33,7 +36,9 @@ import { ConversorHistoryComponent } from './conversor-history/conversor-history
     ButtonLargeModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule,
+    MatIconModule,
   ]
 })
 export class ConversorModule { }

@@ -1,8 +1,9 @@
 import { MatPaginator } from '@angular/material/paginator';
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Conversion } from 'src/app/models/conversion';
+
 
 @Component({
   selector: 'app-conversor-history',
@@ -11,7 +12,7 @@ import { Conversion } from 'src/app/models/conversion';
 })
 export class ConversorHistoryComponent implements OnInit, AfterViewInit {
 
-  columnsToDisplay: string[] = ['date', 'hour', 'value', 'from', 'result', 'to', 'rate'];
+  columnsToDisplay: string[] = ['date', 'hour', 'value', 'from', 'result', 'to', 'rate', 'action'];
   dataSource!: MatTableDataSource<Conversion>
   conversions: Conversion[] = []
 
@@ -28,6 +29,12 @@ export class ConversorHistoryComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.conversions = JSON.parse(sessionStorage.getItem('conversions') as string)
     this.dataSource = new MatTableDataSource(this.conversions)
+  }
+
+  deleteData(target: Conversion) {
+    let newDataSource = this.dataSource.data.filter(conversao => conversao != target)
+    this.dataSource.data = newDataSource
+    sessionStorage.setItem('conversions', JSON.stringify(newDataSource))
   }
 
 }
