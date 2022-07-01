@@ -1,12 +1,18 @@
-table {
-  width: 100%;
+.alert-icon {
+  color: #ff000093;
+  vertical-align: middle;
+  cursor: pointer;
 }
 
-mat-icon:hover {
+.delete-icon:hover {
   cursor: pointer;
   color: #3f51b5;
 }
 
 .mat-row:hover {
   background-color: #3f51b521;
+}
+
+table {
+  width: 100%;
 }

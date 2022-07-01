@@ -49,7 +49,7 @@
       <button
         [disabled]="convertForm.invalid"
         class="btn btn-primary active"
-        (click)="sendToConvert()"
+        (click)="sendForm(initialCurrency, finalCurrency, value)"
       >
         Converter
       </button>

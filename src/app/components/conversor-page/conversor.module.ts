@@ -11,6 +11,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 import { ButtonLargeModule } from './../button-large/button-large.module';
@@ -42,7 +43,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatPaginatorModule,
     MatSnackBarModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ]
 })
 export class ConversorModule { }

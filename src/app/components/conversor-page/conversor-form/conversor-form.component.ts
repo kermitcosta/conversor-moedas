@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, switchMap } from 'rxjs';
 import { SupportedSymbols } from 'src/app/models/supported-symbols';
 import { ExchangeService } from 'src/app/services/exchange.service';
 
@@ -21,6 +22,7 @@ export class ConversorFormComponent implements OnInit {
   value!: number
   showDiv: boolean = false
 
+
   conversion!: Conversion
   conversions: Conversion[] = []
 
@@ -37,27 +39,47 @@ export class ConversorFormComponent implements OnInit {
     }
   }
 
-  sendToConvert() {
-    this.service.convert(this.initialCurrency, this.finalCurrency, this.value)
-      .subscribe(res => {
-        this.conversion = {
-          from: res.query.from,
-          to: res.query.to,
-          value: res.query.amount,
-          date: new Date(),
-          result: res.result,
-          rate: res.info.rate
-        }
-        this.conversions.push(this.conversion)
-        this.showDiv = true
-        sessionStorage.setItem('conversions', JSON.stringify(this.conversions))
-        this._snackBar.open('Conversão realizada', '', { duration: 2500, panelClass: ['blue-snackbar'] })
-        // this.redirect.emit(this.conversions)
+  sendForm(initialCurrency: string, finalCurrency: string, value: number): void {
+    let limitBoolean!: boolean
+    const currencyRequisition: Observable<any> = this.service.convert(initialCurrency, finalCurrency, value)
+
+    if (finalCurrency != "USD") {
+      this.service.convertToUsd(initialCurrency, value).pipe(
+        switchMap(response => {
+          response.result > 10000 ? limitBoolean = true : limitBoolean = false
+          return currencyRequisition
+        })
+      ).subscribe(response => {
+        this.createConversion(response, limitBoolean)
       })
+    } else {
+      currencyRequisition.subscribe(response => {
+        response.result > 10000 ? limitBoolean = true : limitBoolean = false
+        this.createConversion(response, limitBoolean)
+      })
+    }
   }
 
-  clearConversion(form: NgForm) {
+  private createConversion(response: any, limitBoolean: boolean): void {
+    this.conversion = {
+      from: this.initialCurrency,
+      to: this.finalCurrency,
+      value: this.value,
+      date: new Date(),
+      result: response.result,
+      rate: response.info.rate,
+      dollarLimit: limitBoolean
+    }
+
+    this.conversions.push(this.conversion)
+    this.showDiv = true
+    sessionStorage.setItem('conversions', JSON.stringify(this.conversions))
+    this._snackBar.open('Conversão realizada', '', { duration: 2500, panelClass: ['blue-snackbar'] })
+  }
+
+  clearConversion(form: NgForm): void {
     this.showDiv = false
     form.resetForm()
   }
+
 }

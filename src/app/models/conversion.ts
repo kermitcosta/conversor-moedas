@@ -4,5 +4,6 @@ export interface Conversion {
   value: number,
   date: Date,
   result: number,
-  rate: number
+  rate: number,
+  dollarLimit: boolean
 }

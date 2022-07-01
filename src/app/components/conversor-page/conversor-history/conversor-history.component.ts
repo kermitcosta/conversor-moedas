@@ -35,7 +35,7 @@ export class ConversorHistoryComponent implements OnInit, AfterViewInit {
     this.dataSource = new MatTableDataSource(this.conversions)
   }
 
-  openDialog(target: Conversion) {
+  openDialog(target: Conversion): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent)
 
     dialogRef.afterClosed().subscribe(res => {
@@ -45,11 +45,15 @@ export class ConversorHistoryComponent implements OnInit, AfterViewInit {
     })
   }
 
-  private deleteData(target: Conversion) {
+  private deleteData(target: Conversion): void {
     let newDataSource = this.dataSource.data.filter(conversao => conversao != target)
     this.conversions = newDataSource
     this.dataSource.data = newDataSource
-    sessionStorage.setItem('conversions', JSON.stringify(newDataSource))
+    if (newDataSource.length == 0) {
+      sessionStorage.clear()
+    } else {
+      sessionStorage.setItem('conversions', JSON.stringify(newDataSource))
+    }
     this.snackBar.open('Conversão Apagada', '', { duration: 2500, panelClass: ['blue-snackbar'] })
   }
 

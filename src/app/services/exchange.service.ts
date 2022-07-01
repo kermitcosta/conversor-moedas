@@ -19,5 +19,9 @@ export class ExchangeService {
     return this.http.get<any>(`${this.API}/convert?from=${from}&to=${to}&amount=${value}`)
   }
 
+  public convertToUsd(from: string, value: number): Observable<any> {
+    return this.http.get<any>(`${this.API}/convert?from=${from}&to=USD&amount=${value}`)
+  }
+
 }
 
