@@ -28,7 +28,7 @@ export class ConversorFormComponent implements OnInit {
 
   // @Output() redirect: EventEmitter<any> = new EventEmitter
 
-  constructor(private service: ExchangeService, private _snackBar: MatSnackBar) { }
+  constructor(private service: ExchangeService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.service.listSymbols().subscribe(dado => {
@@ -41,19 +41,19 @@ export class ConversorFormComponent implements OnInit {
 
   sendForm(initialCurrency: string, finalCurrency: string, value: number): void {
     let limitBoolean!: boolean
-    const currencyRequisition: Observable<any> = this.service.convert(initialCurrency, finalCurrency, value)
+    const exchangeRequisition: Observable<any> = this.service.convert(initialCurrency, finalCurrency, value)
 
     if (finalCurrency != "USD") {
       this.service.convertToUsd(initialCurrency, value).pipe(
         switchMap(response => {
           response.result > 10000 ? limitBoolean = true : limitBoolean = false
-          return currencyRequisition
+          return exchangeRequisition
         })
       ).subscribe(response => {
         this.createConversion(response, limitBoolean)
       })
     } else {
-      currencyRequisition.subscribe(response => {
+      exchangeRequisition.subscribe(response => {
         response.result > 10000 ? limitBoolean = true : limitBoolean = false
         this.createConversion(response, limitBoolean)
       })
@@ -74,7 +74,7 @@ export class ConversorFormComponent implements OnInit {
     this.conversions.push(this.conversion)
     this.showDiv = true
     sessionStorage.setItem('conversions', JSON.stringify(this.conversions))
-    this._snackBar.open('Conversão realizada', '', { duration: 2500, panelClass: ['blue-snackbar'] })
+    this.snackBar.open('Conversão realizada', '', { duration: 2500, panelClass: ['blue-snackbar'], verticalPosition: 'top' })
   }
 
   clearConversion(form: NgForm): void {

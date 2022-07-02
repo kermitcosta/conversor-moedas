@@ -50,11 +50,11 @@ export class ConversorHistoryComponent implements OnInit, AfterViewInit {
     this.conversions = newDataSource
     this.dataSource.data = newDataSource
     if (newDataSource.length == 0) {
-      sessionStorage.clear()
+      sessionStorage.removeItem('conversions')
     } else {
       sessionStorage.setItem('conversions', JSON.stringify(newDataSource))
     }
-    this.snackBar.open('Conversão Apagada', '', { duration: 2500, panelClass: ['blue-snackbar'] })
+    this.snackBar.open('Conversão Apagada', '', { duration: 2500, panelClass: ['blue-snackbar'], verticalPosition: 'top' })
   }
 
 }

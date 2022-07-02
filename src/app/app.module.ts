@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     AppComponent,
     NavBarComponent,
     ErrorPageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

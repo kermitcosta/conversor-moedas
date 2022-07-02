@@ -14,6 +14,11 @@ a:hover {
 }
 
 .blue-snackbar {
-  background: #3f51b5;
-  color: #ffff;
+  background: #ffff;
+  color: #3f51b5;
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 10000;
 }
