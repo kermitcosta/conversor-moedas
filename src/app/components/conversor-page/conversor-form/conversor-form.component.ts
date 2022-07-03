@@ -74,7 +74,7 @@ export class ConversorFormComponent implements OnInit {
     this.conversions.push(this.conversion)
     this.showDiv = true
     sessionStorage.setItem('conversions', JSON.stringify(this.conversions))
-    this.snackBar.open('Conversão realizada', '', { duration: 2500, panelClass: ['blue-snackbar'], verticalPosition: 'top' })
+    this.snackBar.open('Conversão realizada', '', { duration: 2500, panelClass: ['blue-snackbar'] })
   }
 
   clearConversion(form: NgForm): void {

@@ -54,7 +54,7 @@ export class ConversorHistoryComponent implements OnInit, AfterViewInit {
     } else {
       sessionStorage.setItem('conversions', JSON.stringify(newDataSource))
     }
-    this.snackBar.open('Conversão Apagada', '', { duration: 2500, panelClass: ['blue-snackbar'], verticalPosition: 'top' })
+    this.snackBar.open('Conversão Apagada', '', { duration: 2500, panelClass: ['blue-snackbar'] })
   }
 
 }

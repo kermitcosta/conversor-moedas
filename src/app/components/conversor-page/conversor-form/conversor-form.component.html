@@ -9,6 +9,7 @@
             name="initialCurrency"
             required="true"
           >
+            <mat-option>Nenhum</mat-option>
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
               {{ symbol.code }} - {{ symbol.description }}
             </mat-option>
@@ -24,6 +25,7 @@
             name="finalCurrency"
             required="true"
           >
+            <mat-option>Nenhum</mat-option>
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
               {{ symbol.code }} - {{ symbol.description }}
             </mat-option>
@@ -35,6 +37,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Valor</mat-label>
           <input
+            class="right-align"
             type="number"
             matInput
             [(ngModel)]="value"
@@ -59,13 +62,14 @@
 <div *ngIf="showDiv" class="container mb-4">
   <div class="text-center">
     <p c>
-      {{ conversion.value }}
+      {{ conversion.value | currency: " " }}
       <span class="fw-bold">{{ conversion.from }}</span> equivale a
-      <span class="fw-bold">{{ conversion.result }}</span> do símbolo
+      <span class="fw-bold">{{ conversion.result | currency: " " }}</span>
+      do símbolo
       <span class="fw-bold">{{ conversion.to }}.</span>
     </p>
     <p class="fw-light text-muted fs-6">
-      Taxa de conversão: {{ conversion.rate }}
+      Taxa de conversão: {{ conversion.rate | number: "1.0-3" }}
     </p>
   </div>
   <div class="text-center">
