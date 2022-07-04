@@ -22,7 +22,6 @@ export class ConversorFormComponent implements OnInit {
   value!: number
   showDiv: boolean = false
 
-
   conversion!: Conversion
   conversions: Conversion[] = []
 

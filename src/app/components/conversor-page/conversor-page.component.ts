@@ -16,7 +16,7 @@ export class ConversorPageComponent {
 
   constructor() { }
 
-  tabChanged(event: MatTabChangeEvent) {
+  tabChange(event: MatTabChangeEvent) {
     this.matLabel = event.tab.textLabel.toUpperCase()
   }
 
