@@ -44,6 +44,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
 
+  title = 'conversor-moedas';
+
   prepareRoute(outlet: RouterOutlet) {
     if (outlet.isActivated) { return outlet.activatedRoute.snapshot.url }
     return

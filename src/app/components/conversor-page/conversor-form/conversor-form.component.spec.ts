@@ -1,4 +1,8 @@
+import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ExchangeService } from 'src/app/services/exchange.service';
 
 import { ConversorFormComponent } from './conversor-form.component';
 
@@ -8,9 +12,11 @@ describe('ConversorFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConversorFormComponent ]
+      declarations: [ConversorFormComponent],
+      imports: [HttpClientTestingModule, MatSnackBarModule, FormsModule],
+      providers: [ExchangeService]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ConversorFormComponent);
     component = fixture.componentInstance;

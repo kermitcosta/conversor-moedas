@@ -25,7 +25,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
