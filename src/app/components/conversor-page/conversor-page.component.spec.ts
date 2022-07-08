@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConversorModule } from './conversor.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConversorPageComponent } from './conversor-page.component';
@@ -8,9 +10,10 @@ describe('ConversorPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConversorPageComponent ]
+      declarations: [ConversorPageComponent],
+      imports: [ConversorModule, BrowserAnimationsModule]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ConversorPageComponent);
     component = fixture.componentInstance;

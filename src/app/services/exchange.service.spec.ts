@@ -1,9 +1,10 @@
+
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ExchangeService } from './exchange.service';
 
-describe('GetSymbolsService', () => {
+describe(`${ExchangeService.name}`, () => {
   let service: ExchangeService;
 
   beforeEach(() => {
