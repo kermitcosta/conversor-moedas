@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, switchMap } from 'rxjs';
+
 import { SupportedSymbols } from 'src/app/models/supported-symbols';
 import { ExchangeService } from 'src/app/services/exchange.service';
-
 import { Conversion } from './../../../models/conversion';
-
 
 @Component({
   selector: 'app-conversor-form',
@@ -17,15 +16,13 @@ export class ConversorFormComponent implements OnInit {
 
   symbols: SupportedSymbols[] = []
 
-  initialCurrency = ''
-  finalCurrency = ''
+  initialCurrency = 'BRL'
+  finalCurrency = 'USD'
   value!: number
   showDiv: boolean = false
 
   conversion!: Conversion
   conversions: Conversion[] = []
-
-  // @Output() redirect: EventEmitter<any> = new EventEmitter
 
   constructor(private service: ExchangeService, private snackBar: MatSnackBar) { }
 
@@ -38,12 +35,16 @@ export class ConversorFormComponent implements OnInit {
     }
   }
 
-  sendForm(initialCurrency: string, finalCurrency: string, value: number): void {
+  sendForm(): void {
     let limitBoolean!: boolean
-    const exchangeRequisition: Observable<any> = this.service.convert(initialCurrency, finalCurrency, value)
+    const exchangeRequisition: Observable<any> = this.service.convert(
+      this.initialCurrency,
+      this.finalCurrency,
+      this.value
+    )
 
-    if (finalCurrency != "USD") {
-      this.service.convertToUsd(initialCurrency, value).pipe(
+    if (this.finalCurrency != "USD") {
+      this.service.convertToUsd(this.initialCurrency, this.value).pipe(
         switchMap(response => {
           response.result > 10000 ? limitBoolean = true : limitBoolean = false
           return exchangeRequisition
@@ -78,7 +79,7 @@ export class ConversorFormComponent implements OnInit {
 
   clearConversion(form: NgForm): void {
     this.showDiv = false
-    form.resetForm()
+    form.reset()
   }
 
 }

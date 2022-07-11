@@ -1,5 +1,5 @@
 <div class="container mt-4 mb-4">
-  <form #convertForm="ngForm">
+  <form name="convertForm" #convertForm="ngForm" (ngSubmit)="sendForm()">
     <div class="row text-center">
       <div class="col-md-4">
         <mat-form-field appearance="outline">
@@ -7,7 +7,7 @@
           <mat-select
             [(ngModel)]="initialCurrency"
             name="initialCurrency"
-            required="true"
+            required
           >
             <mat-option>Nenhum</mat-option>
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
@@ -20,11 +20,7 @@
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Moeda Destino</mat-label>
-          <mat-select
-            [(ngModel)]="finalCurrency"
-            name="finalCurrency"
-            required="true"
-          >
+          <mat-select [(ngModel)]="finalCurrency" name="finalCurrency" required>
             <mat-option>Nenhum</mat-option>
             <mat-option *ngFor="let symbol of symbols" [value]="symbol.code">
               {{ symbol.code }} - {{ symbol.description }}
@@ -37,12 +33,13 @@
         <mat-form-field appearance="outline">
           <mat-label>Valor</mat-label>
           <input
+            id="valueInput"
             class="right-align"
             type="number"
             matInput
             [(ngModel)]="value"
             name="valor"
-            required="true"
+            required
             min="0.01"
           />
         </mat-form-field>
@@ -51,8 +48,8 @@
     <div class="d-grid gap-2 col-6 mx-auto">
       <button
         [disabled]="convertForm.invalid"
-        class="btn btn-primary active"
-        (click)="sendForm(initialCurrency, finalCurrency, value)"
+        class="submit-button btn btn-primary active"
+        type="submit"
       >
         Converter
       </button>

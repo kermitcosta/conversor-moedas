@@ -22,6 +22,7 @@ const routes: Routes = [
     loadChildren: () => import('src/app/components/about-page/about-page.module').then(m => m.AboutPageModule)
   },
   { path: '**', component: ErrorPageComponent, title: '404' }
+
 ];
 
 @NgModule({
