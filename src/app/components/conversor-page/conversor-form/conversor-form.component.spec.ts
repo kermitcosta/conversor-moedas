@@ -47,7 +47,7 @@ describe(`${ConversorFormComponent.name}`, () => {
     expect(service.listSymbols).toHaveBeenCalled()
   });
 
-  it(`#${ConversorFormComponent.prototype.clearConversion.name}() should reset form when called`, () => {
+  it(`(D) #${ConversorFormComponent.prototype.clearConversion.name}() should reset form when called`, () => {
     fixture.detectChanges()
     const form: NgForm = fixture.nativeElement.querySelector('form')
     spyOn(form, 'reset').and.callThrough()
@@ -55,7 +55,7 @@ describe(`${ConversorFormComponent.name}`, () => {
     expect(form.reset).toHaveBeenCalled()
   });
 
-  it(`#${ConversorFormComponent.prototype.clearConversion.name}() should set #showDiv to false when called`, () => {
+  it(`(D) #${ConversorFormComponent.prototype.clearConversion.name}() should set #showDiv to false when called`, () => {
     fixture.detectChanges()
     const form: NgForm = fixture.nativeElement.querySelector('form')
     component.showDiv = true
@@ -63,17 +63,17 @@ describe(`${ConversorFormComponent.name}`, () => {
     expect(component.showDiv).toBe(false)
   });
 
-  it(`Input #value should be invalid when value is <= 0.01`, async () => {
+  it(`(D) Input #value should be invalid when value is a string or <= 0.01 `, async () => {
     fixture.detectChanges()
     await fixture.whenStable().then(() => {
       const valueInput: HTMLInputElement = fixture.nativeElement.querySelector('#valueInput')
-      const invalidValues = [0, -2, -1, -77, -821763]
-      invalidValues.forEach((valor) => {
-        valueInput.valueAsNumber = valor
+      const invalidValues = [0, -2, -1, -77, -821763, 'lorem', 'lorem ipsum', '']
+      invalidValues.forEach((value) => {
+        valueInput.value = `${value}`
         valueInput.dispatchEvent(new Event('input'))
         fixture.detectChanges()
         expect(valueInput.classList)
-          .withContext(`Valor válido: ${valor}`)
+          .withContext(`Valor válido: ${value}`)
           .toContain('ng-invalid')
       })
     })

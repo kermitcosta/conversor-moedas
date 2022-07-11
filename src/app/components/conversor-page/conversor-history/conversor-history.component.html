@@ -68,7 +68,7 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Apagar</th>
       <td mat-cell *matCellDef="let conversion">
-        <a (click)="openDialog(conversion)"
+        <a class="delete-button" (click)="openDialog(conversion)"
           ><mat-icon matTooltip="Apagar conversão" class="delete-icon"
             >delete_outline</mat-icon
           ></a
