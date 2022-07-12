@@ -12,6 +12,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { FooterComponent } from './components/footer/footer.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

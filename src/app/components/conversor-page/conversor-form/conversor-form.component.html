@@ -59,14 +59,14 @@
 <div *ngIf="showDiv" class="container mb-4">
   <div class="text-center">
     <p c>
-      {{ conversion.value | currency: " " }}
+      {{ conversion.value | formatNumber }}
       <span class="fw-bold">{{ conversion.from }}</span> equivale a
-      <span class="fw-bold">{{ conversion.result | currency: " " }}</span>
+      <span class="fw-bold">{{ conversion.result | formatNumber }}</span>
       do símbolo
       <span class="fw-bold">{{ conversion.to }}.</span>
     </p>
     <p class="fw-light text-muted fs-6">
-      Taxa de conversão: {{ conversion.rate | number: "1.0-3" }}
+      Taxa de conversão: {{ conversion.rate | formatNumber }}
     </p>
   </div>
   <div class="text-center">
