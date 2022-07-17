@@ -24,8 +24,8 @@ export class SupportedSymbolsListComponent implements OnInit {
   constructor(private service: ExchangeService) { }
 
   ngOnInit(): void {
-    this.service.listSymbols().subscribe(dado => {
-      this.symbols = Object.values(dado.symbols)
+    this.service.listSymbols().subscribe(res => {
+      this.symbols = res
       this.dataSource = new MatTableDataSource(this.symbols)
 
       this.dataSource.sort = this.sort
