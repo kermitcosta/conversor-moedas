@@ -14,7 +14,7 @@ import { Conversion } from './../../../models/conversion';
 })
 export class ConversorFormComponent implements OnInit {
 
-  symbols: SupportedSymbols[] = []
+  symbols$!: Observable<SupportedSymbols[]>
 
   initialCurrency = 'BRL'
   finalCurrency = 'USD'
@@ -27,9 +27,8 @@ export class ConversorFormComponent implements OnInit {
   constructor(private service: ExchangeService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.service.listSymbols().subscribe(res => {
-      this.symbols = res;
-    })
+    this.symbols$ = this.service.listSymbols()
+
     if (sessionStorage.length > 0) {
       this.conversions = JSON.parse(sessionStorage.getItem('conversions') as string);
     }
