@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkconversor_moedas=self.webpackChunkconversor_moedas||[]).push([[592],{6896:(s,u,e)=>{e.d(u,{P:()=>r});var a=e(6895),n=e(4650);let r=(()=>{class o{}return o.\u0275fac=function(_){return new(_||o)},o.\u0275mod=n.oAB({type:o}),o.\u0275inj=n.cJS({imports:[a.ez]}),o})()}}]);
